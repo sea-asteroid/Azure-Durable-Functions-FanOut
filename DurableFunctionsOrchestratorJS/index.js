@@ -45,4 +45,29 @@ module.exports = df.orchestrator(function* (context) {
   // Send the list to an Activity Function to save them to Blob Storage.
   //yield context.df.callActivity('SaveRepositories', results)
   //return context.instanceId
-})
+});
+
+
+/*
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    //const deviceIds = yield context.df.callActivity("GetNewDeviceIds");
+    const deviceIds = Array(100, 200, 300);
+    // Run multiple device provisioning flows in parallel
+    const provisioningTasks = [];
+    var id = 0;
+    for (const deviceId of deviceIds) {
+        //const child_id = context.df.instanceId+`:${id}`;
+        const New_deviceId = deviceId + id;
+        //const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId, child_id);
+        const provisionTask = context.df.callSubOrchestrator("Hello", New_deviceId);
+        provisioningTasks.push(provisionTask);
+        id++;
+    }
+
+    yield context.df.Task.all(provisioningTasks);
+
+    // ...
+});
+*/
