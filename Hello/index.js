@@ -16,8 +16,8 @@ module.exports = async function (context) {
     var obj = res.split(" ");
     obj_id = obj[1];
     obj_count = obj[0];
-    console.log('Act_ start ' + obj_id + 'for_index ' + obj_count + ' ' + new Date().getTime());
-    var num = 2000000000;
+    console.log('Act_ start ' + obj_id + ' ' + new Date().getTime() + ' array_value ' + obj_count);
+    var num = 1000000000;
     function fibonacci(num){
         var a = 1, b = 0, temp;
         while (num >= 0){
@@ -29,7 +29,9 @@ module.exports = async function (context) {
         return b;
     }
     let va = fibonacci(num);
-    console.log('Act_ end__ ' + obj_id +'for_index' + obj_count+ ' ' + new Date().getTime());
+    console.log('Act_ end__ ' + obj_id + ' ' + new Date().getTime() + ' array_value ' + obj_count);
     //return context.bindings.name + 1;
-    return obj_count + 1;
+    console.log('Act_Output ' + obj_count);
+    var aaa = parseInt(obj_count, 10);
+    return aaa+1;
 };
